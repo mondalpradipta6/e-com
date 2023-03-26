@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Sacramento&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Login</title>
+</head>
+<body style="background-color: rgb(200, 245, 163);">
+
+  
+
+    <div class = "container">
+        <div class="row col-md-6 col-md-offset">
+           
+
+        <form action="/login" method="post">
+            <h3>Login Form</h3>
+            <div class = "form-group">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" class="form-control" autocomplete="=off">
+                <h5 id="emailcheck">  </h5>
+            </div>
+
+            <div class ="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" class="form-contol" autocomplete="off">
+                <h5 id="passcheck">  </h5>
+            </div>
+
+            <input type="submit" name="submit" value="Login" id="submitbtn" class="btn btn-primary">
+        </form><br><br><br>
+        
+
+        <p>don't have an account? please register </p>
+
+        
+        <div class="test1">
+            <a href="/register" role="button" class="btn btn-danger">Register</a><br><Br>
+        </div>
+
+    </div>
+
+    
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#emailcheck').hide();
+            $('#passcheck').hide();
+
+            var email_err=true;
+            var pass_err=true;
+
+            $('#email').keyup(function(){
+                email_check();
+            });
+            function email_check(){
+                
+
+                let emailReg=/^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
+                var email_val=$('#email').val();
+                var bool=emailReg.test(email_val);
+
+                if(!bool){
+                    $('#emailcheck').show();
+                    $('#emailcheck').html("please enter email");
+                    $('#emailcheck').focus();
+                    $('#emailcheck').css("color","red");
+                    email_err=false;
+                    return false;
+                }else{
+                    $('#emailcheck').hide();
+                }
+        }
+
+
+        // password validation
+
+        $('#password').keyup(function(){
+          
+            pass_check()
+        });
+
+        function pass_check(){
+            
+            var passwordstr=$('#password').val();
+            if(passwordstr.length == ''){
+                $('#passcheck').show();
+                $('#passcheck').html("please fill up the password");
+                $('#passcheck').focus();
+                $('#passcheck').css("color","red");
+                pass_err=false;
+                return false;
+                
+
+            }else{
+                $('#passcheck').hide();
+            }
+
+            if(!(passwordstr.length ==8)){
+                $('#passcheck').show();
+                $('#passcheck').html("password length must be 8");
+                $('#passcheck').focus();
+                $('#passcheck').css("color","red");
+                pass_err=false;
+                return false
+
+            }else{
+                $('#passcheck').hide();
+
+            }
+
+        }
+
+        $('#submitbtn').click(function(){
+
+            email_err=true;
+            pass_err=true;
+
+            email_check();
+            pass_check();
+
+            if((email_err==true) && (paa_err==true)){
+                return true;
+            }else{
+                return false;
+            }
+
+        });
+
+    });
+
+</script>
+
+
+
+    
+</body>
+</html>

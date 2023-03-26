@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href=link
+    href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat:ital,wght@1,100&family=Sacramento&family=Ubuntu:wght@300&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>productlist</title>
+  <style>
+    /* .pro {
+          background-color: #f44336;
+          color: white;
+          padding: 14px 25px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+        }
+        
+        .pro:hover {
+          background-color: red;
+        }  */
+  </style>
+
+</head>
+
+<body>
+
+  
+  <%if(reg.length>0){%>
+    <div class="alert alert-success" id="flash">
+      <%=reg%>
+    </div>
+
+    <script>
+      setTimeout(() => {
+  const box = document.getElementById('flash');
+
+  // 👇️ removes element from DOM
+  box.style.display = 'none';
+
+  // 👇️ hides element (still takes up space on page)
+  // box.style.visibility = 'hidden';
+}, 5000); // 👈️ time in milliseconds
+
+     
+    </script>
+
+    <%}%>
+
+
+  <%if(log.length>0){%>
+    <div class="alert alert-success" id="flash">
+      <%=log%>
+    </div>
+
+    <script>
+      setTimeout(() => {
+  const box = document.getElementById('flash');
+
+  // 👇️ removes element from DOM
+  box.style.display = 'none';
+
+  // 👇️ hides element (still takes up space on page)
+  // box.style.visibility = 'hidden';
+}, 5000); // 👈️ time in milliseconds
+
+     
+    </script>
+
+    <%}%>
+
+
+    <%if(addPro.length>0){%>
+      <div style="background-color: rgba(71, 71, 189, 0.841);color: rgb(20, 225, 20);" id="flash">
+        <%=addPro%>
+      </div>
+      
+      <script>
+        setTimeout(() => {
+          document.getElementById("flash").innerHTML = ''
+        }, 5000);
+      </script>
+  
+      <%}%>
+
+      <%if(addCart.length>0){%>
+        <div style="background-color: rgba(71, 71, 189, 0.841);color: rgb(20, 225, 20);" id="flash">
+          <%=addCart%>
+        </div>
+        
+        <script>
+          setTimeout(() => {
+            document.getElementById("flash").innerHTML = ''
+          }, 5000);
+        </script>
+    
+        <%}%>
+
+
+
+      <h1>Product List</h1>
+      <br><br>
+
+      <div><a href="/addproduct">
+          <button class="pro">Add Product</button>
+        </a>
+
+        <a href="/list">
+          <button class="pro li">Lists</button>
+        </a>
+
+        <a href="/cartList">
+          <button class="pro li"><i class="fa-solid fa-cart-plus"></i></button>
+        </a>
+
+      </div><br><br>
+
+      <div>
+        <a href="/changepassword">changepassword</a>
+      </div><br><br>
+      <div><a href="/logout">Logout</a></div><br><br>
+
+
+
+      <main>
+        <div class="container1">
+          <div class="row">
+            <div class="col-md-12">
+
+              <% if (products.length){ %>
+                <div class="row">
+                  <% products.map(x=>{%>
+                    <div class="col-md-3">
+                      <div class="product">
+                        <div>
+                          <img src="uploads/<%=x.image%>" class="img-fluid" />
+                        </div>
+                        <h3>
+                          <%= x.name %>
+                        </h3>
+                        <div>Price: <strong>
+                            <%=x.price %>
+                          </strong></div>
+                        <div>Quantity: <%=x.quantity %>
+                        </div>
+                        <p>
+                          <%=x.description%>
+                        </p>
+                        <!-- <i class="fa-solid fa-cart-plus"></i> -->
+                        <a href="/addcart?productId=<%=x._id%>">
+                          <button class="btn btn-danger" style="margin-left: 3px;"><i class="fa-solid fa-cart-plus"></i>
+                            Add to cart</button>
+                      </div>
+
+                    </div>
+
+                    <% }) %>
+                </div>
+
+
+                <% }else { %>
+                  <div>No products available</div>
+
+                  <% } %>
+            </div>
+          </div>
+        </div>
+
+      </main>
+
+      </div>
+</body>
+
+</html>

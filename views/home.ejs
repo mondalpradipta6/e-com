@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href=link
+    href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat:ital,wght@1,100&family=Sacramento&family=Ubuntu:wght@300&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+    <title>Home</title>
+</head>
+<body>
+  <%if(logOut?.length>0){%>
+    <div class="alert alert-success" id="flash">
+      <%=logOut%>
+    </div>
+
+    <script>
+      setTimeout(() => {
+  const box = document.getElementById('flash');
+
+  // 👇️ removes element from DOM
+  box.style.display = 'none';
+
+  // 👇️ hides element (still takes up space on page)
+  // box.style.visibility = 'hidden';
+}, 5000); // 👈️ time in milliseconds
+
+     
+    </script>
+
+    <%}%>
+    <center>
+    <h3>Welcome to Home page</h3>
+   
+  <div class="container">
+    
+  
+    
+
+    <div >
+      <a href="/login">
+        
+       <input type="submit" name="submit" value="Login" id="submitbtn" class="btn btn-primary">
+        
+        </a>
+
+       
+    </div>  
+
+  
+  </div>
+</center>
+</body>
+</html>

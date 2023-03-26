@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href=link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat:ital,wght@1,100&family=Sacramento&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Edit Product</h1>
+    <form class="form-style-9" method="post" action="/editproductSave?id=<%=productId%>" enctype="multipart/form-data">
+        <ul>
+        <li>
+            <input type="text" name="name" class="field-style field-split align-left" placeholder="Name" value="<%=product.name%>" readonly />
+            <!-- <input type="email" name="field2" class="field-style field-split align-right" placeholder="Email" /> -->
+        
+        </li>
+        <li>
+            <input type="text" name="price" class="field-style field-split align-left" placeholder="Price" value="<%=product.price%>"/>
+            <input type="text" name="quantity" class="field-style field-split align-right" placeholder="Quantity" value="<%=product.quantity%>"/>
+        </li>
+        <li>
+            Image:
+            <input type="file" name="image"class="field-style field-full align-none" value="image" >
+        </li>
+        
+        <li>
+        <textarea name="description" class="field-style" placeholder="Description"><%=product.description%></textarea>
+        </li>
+        <li>
+        <input type="submit" value="edit" />
+        </li>
+        </ul>
+        </form>
+
+
+
+</body>
+</html>

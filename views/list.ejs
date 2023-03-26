@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Sacramento&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>List</title>
+</head>
+<body>
+    
+    <%if(editPro.length>0){%>
+        <div style="background-color: rgba(71, 71, 189, 0.841);color: rgb(20, 225, 20);" id="flash">
+          <%=editPro%>
+        </div>
+        
+        <script>
+          setTimeout(() => {
+            document.getElementById("flash").innerHTML = ''
+          }, 5000);
+        </script>
+    
+        <%}%>
+
+        <%if(deletePro.length>0){%>
+            <div style="background-color: rgba(71, 71, 189, 0.841);color: rgb(20, 225, 20);" id="flash">
+              <%=deletePro%>
+            </div>
+            
+            <script>
+              setTimeout(() => {
+                document.getElementById("flash").innerHTML = ''
+              }, 5000);
+            </script>
+        
+            <%}%>
+  
+     <h1>welcome to list page</h1><br>
+     <h3>product List</h3>
+         <div class="row">
+        <div class="col-12">
+            <div class="card mb-30">
+                
+                <div class="card-body">
+                    <div class="col-sm-12">
+                        <table class="table table-bordered table-striped table-condensed cf table-hover" >
+                            <thead>
+                                <tr>
+                                    <th>Sr.no</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Description</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if(products.length){%>
+                                <%   for(var i = 0;i<products.length;i++) {  %>
+                                        
+                                        <tr> 
+                                            <td><%=i+1%></td>
+                                            <td><%=products[i].name%></td>
+                                            <td><%=products[i].price%></td>
+                                            <td><%=products[i].quantity%></td>
+                                            <td><%=products[i].description%></td>
+                          
+                                         
+                                             <td>
+                                                <a href="/edit?id=<%=products[i]._id%>">
+                                                <button class="btn btn-danger" style="margin-left: 3px;">Edit</button>
+                                                
+                                            </a>
+                                            <a href="/delete?id=<%=products[i]._id%>">
+                                                <button class="btn btn-danger" style="margin-left: 5px;">Delete</button>
+                                                
+                                            </a>
+                                        </td>
+                                            
+                                        </tr> 
+                        
+                                    <% } %>  
+                                <%}%>
+                            </tbody>
+                         </table>
+                       
+                </div>
+            </div>
+        </div>
+    </div> 
+
+
+
+
+   
+</body>
+</html>
+
+
+
+
+ <!-- <div class="row">
+        <div class="col-12">
+            <div class="card mb-30">
+                <h4 class="page-title ml-20 mt-30">My Team</h4>
+                <div class="card-body">
+                    <div class="col-sm-12">
+                        <table class="table table-bordered table-striped table-condensed cf table-hover" >
+                            <thead>
+                                <tr>
+                                    <th>Sr.no</th>
+                                    <th>Name</th>
+                                    <th>Sponsor I'D</th>
+                                    <th>Contact no.</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if(true){%>
+                                <%   for(var i = 0;i <10;i++) { 
+                                       %>  
+                                        <tr> 
+                                            <td><%=i+1%></td>
+                                            <td><%=i%></td>
+                                            <td><%=i%>%</td>
+                                            <td><%=i%></td>
+                          
+                                            <td><%- true ?  '<span class="badge label-table badge-success">Active</span>':'<span class="badge label-table badge-danger">In-Active</span>' %></td> -->
+                                            <!-- <td><a href="/edit">
+                                                <button class="btn btn-danger">Edit</button>
+                                            </a></td>
+                                        </tr> 
+                        
+                                    <% } %>  
+                                <%}%>
+                            </tbody>
+                         </table>
+                         <%if(true){%>
+                         <div class="table-bordered table-striped table-condensed" style="text-align: center;">
+                            <p style="font-size: 18px; font-weight: 600;">No Sponsor is Active.</p>
+                         </div>
+                         <%}%>
+                </div>
+            </div>
+        </div>
+    </div> --> 

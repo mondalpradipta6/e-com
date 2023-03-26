@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href=link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Montserrat:ital,wght@1,100&family=Sacramento&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Document</title>
+</head>
+<body style="background-color:powderblue;">
+    <div class="container">
+
+        <div class="col-lg-8 m-auto d-block">
+
+        <form action="/register" method="post">
+
+            <h3>Registration Form</h3>
+
+            <div class="form-group">
+                <label for="username">Full Name</label>
+                <input type="text" name="name" id="username" class="form-control" autocomplete="off">
+                <h5 id="usercheck">  </h5>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email-id" class="form-control" autocomplete="off">
+                <h5 id="emailheck">  </h5>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" class="form-control" autocomplete="off">
+                <h5 id="passcheck">  </h5>
+            </div>
+
+            <div class="form-group">
+                <label for="conpassword">Confirm Password:</label>
+                <input type="password" name="conpassword" id="conpassword" class="form-control" autocomplete="off">
+                <h5 id="conpasscheck">  </h5>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Date of Birth:</label>
+                <input type="text" name="date" id="date" class="form-control" autocomplete="off">
+                <h5 id="datecheck">  </h5>
+            </div>
+
+            <input type="submit" name="submit" id="submitbtn" value="Register" class="btn btn-danger">
+
+
+        
+        </form>
+    </div>
+
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#usercheck').hide();
+            $('#emailcheck').hide();
+            $('#passcheck').hide();
+            $('#conpasscheck').hide();
+            $('#datecheck').hide();
+
+            var user_err=true;
+            var email_err=true;
+            var pass_err=true;
+            var conpass_err=true;
+            var date_err=true;
+
+
+            // full name validation
+            
+            $('#username').keyup(function(){
+                user_check();
+            });
+            function user_check(){
+                var user_val=$('#username').val();
+
+                if(user_val.length=''){
+                    $('#usercheck').show();
+                    $('#usercheck').html("please fill the full name");
+                    $('#usercheck').focus();
+                    $('#usercheck').css("color","red");
+                    user_err=false;
+                    return false;
+
+
+                }else{
+                    $('#usercheck').hide();
+
+                }
+                if((user_val.length<3) || (user_val.length>30)){
+                    $('#usercheck').show();
+                    $('#usercheck').html("username length must be between 3 and 30");
+                    $('#usercheck').focus();
+                    $('#usercheck').css("color","red");
+                    user_err=false;
+                    return false;
+
+
+                }else{
+                    $('#usercheck').hide();
+
+                }
+                
+            }
+            // email validation
+
+            $('#email').keyup(function(){
+                email_check();
+            });
+            function email_check(){
+                let emailreg=/^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
+                var email_val=$('#email').val();
+                var bool=emailreg.test(email_val);
+                if(!bool){
+                    $('#emailcheck').show();
+                    $('#emailcheck').html("please enter email");
+                    $('#emailcheck').focus();
+                    $('#emailcheck').css("color","red");
+                    email_err=false;
+                    return false;
+
+                }else{
+                    $('#emailcheck').hide();
+
+                }
+            }
+
+            // password validation
+
+            $('#password').keyup(function(){
+                pass_check();
+            });
+            function pass_check(){
+                var passwordstr=$('#password').val();
+                if(passwordstr.length==''){
+                    $('#passcheck').show();
+                    $('#passcheck').html("please enter your password");
+                    $('#passcheck').focus();
+                    $('#passcheck').css("color","red");
+                    pass_err=false;
+                    return false;
+                }else{
+                    $('#passcheck').hide();
+
+                }
+                if(!(passwordstr.length==8)){
+                    $('#passcheck').show();
+                    $('#passcheck').html("password length must be 8");
+                    $('#passcheck').focus();
+                    $('#passcheck').css("color","red");
+                    pass_err=false;
+                    return false;
+                }else{
+                    $('#passcheck').hide();
+
+                }
+            }
+
+            $('#conpassword').keyup(function(){
+                con_pass();
+            })
+            function con_pass(){
+                var conpass =$('#conpassword').val();
+                var passwordstr = $('#password').val();
+                if (passwordstr !=conpass){
+                    $('#conpasscheck').show();
+                    $('#conpasscheck').html("password not matched");
+                    $('#conpasscheck').focus();
+                    $('#conpasscheck').css("color","red");
+                    conpass_err=false;
+                    return false;
+
+                }else{
+                    $('#conpasscheck').hide();
+
+                }
+            }
+
+            // date of birth validation
+
+            $('#date').keyup(function(){
+                date_check();
+            });
+            function date_check(){
+                let datereg=/^(0[1-9]|1\d|2\d|3[01])\-(0[1-9]|1[0-2])\-(19|20)\d{2}$/;
+                var date_val=$('#date').val();
+                var bool=datereg.test(date_val);
+
+                if(!bool){
+                    $('#datecheck').show();
+                    $('#datecheck').html("please enter date in format(dd-mm-yyyy");
+                    $('#datecheck').focus();
+                    $('#datecheck').css("color","red");
+                    date_err=false;
+                    return false;
+
+
+                }else{
+                    $('#datecheck').hide();
+                }
+            }
+            $('#submitbtn').click(function(){
+                user_err=true;
+                email_err=true;
+                pass_err=true;
+                conpass_err=true;
+                date_err=true;
+
+                user_check();
+                email_check();
+                pass_check();
+                conpass_check();
+                date_check();
+
+                if((user_err=true)&&(email_err=true)&&(pass_err=true)&&(conpass_err=true)&&(date_err=true)){
+                    return true;
+                }else{
+                    return false;
+                }
+            });
+
+        });
+
+
+    </script>
+    
+</body>
+</html>
